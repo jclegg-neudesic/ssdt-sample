@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{426ab2bc-d525-468f-8485-3ff1915c276e}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -60,19 +60,30 @@
     <Folder Include="_Scripts" />
     <Folder Include="_Scripts\Post-Deployment" />
     <Folder Include="_Scripts\Post-Deployment\Data" />
-    <Folder Include="_Scripts\Post-Deployment\Data\dbo" />
-    <Folder Include="Tables" />
-    <Folder Include="Tables\dbo" />
     <Folder Include="Programability" />
     <Folder Include="Programability\Stored Procedures" />
     <Folder Include="_Profiles" />
     <Folder Include="_Scripts\Utility" />
+    <Folder Include="_Scripts\Post-Deployment\Data\Common" />
+    <Folder Include="_Scripts\Post-Deployment\Data\Common\dbo" />
+    <Folder Include="_Scripts\Post-Deployment\Data\Development" />
+    <Folder Include="_Scripts\Post-Deployment\Data\Production" />
+    <Folder Include="_Scripts\Post-Deployment\Data\Testing" />
+    <Folder Include="_Scripts\Post-Deployment\Data\Development\dbo" />
+    <Folder Include="Tables" />
+    <Folder Include="Tables\dbo" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\dbo\OrderLine.sql" />
-    <Build Include="Tables\dbo\Customer.sql" />
     <Build Include="Programability\Stored Procedures\sp_generate_merge.sql" />
+    <None Include="_Scripts\Post-Deployment\Data\Common\dbo\Item.sql" />
+    <None Include="_Scripts\Post-Deployment\Data\Common\dbo\ItemCategory.sql" />
+    <None Include="_Scripts\Post-Deployment\Data\Development\dbo\Customer.sql" />
+    <Build Include="Tables\dbo\Customer.sql" />
+    <Build Include="Tables\dbo\Item.sql" />
+    <Build Include="Tables\dbo\ItemCategory.sql" />
+    <Build Include="Tables\dbo\Order.sql" />
     <Build Include="Tables\dbo\Order_InsteadOf_Insert.sql" />
+    <Build Include="Tables\dbo\OrderLine.sql" />
     <Build Include="Tables\dbo\OrderLine_InsteadOf_Insert.sql" />
   </ItemGroup>
   <ItemGroup>
@@ -82,29 +93,23 @@
     <PostDeploy Include="_Scripts\Post-Deployment\Script.PostDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="_Scripts\Post-Deployment\Data\dbo\ItemCategory.sql" />
     <None Include="_Profiles\Development.publish.xml" />
     <None Include="_Profiles\Production.publish.xml" />
     <None Include="_Scripts\Utility\Clear Database.sql" />
-    <None Include="_Scripts\Post-Deployment\Data\dbo\Item.sql" />
-    <None Include="_Scripts\Post-Deployment\Data\dbo\Customer.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <Build Include="Tables\dbo\Item.sql" />
-    <Build Include="Tables\dbo\ItemCategory.sql" />
-    <Build Include="Tables\dbo\Order.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac">
-      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac</HintPath>
-      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
-      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
-    </ArtifactReference>
+    <None Include="_Profiles\SRP.publish.xml" />
+    <None Include="_Scripts\Utility\Generate Data Scripts.sql" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="Environment">
       <DefaultValue>Development</DefaultValue>
       <Value>$(SqlCmdVar__1)</Value>
     </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\110\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\110\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
   </ItemGroup>
 </Project>
