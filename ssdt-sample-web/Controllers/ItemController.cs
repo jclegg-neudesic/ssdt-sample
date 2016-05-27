@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ssdt_sample_data;
+using ssdt_sample_web.Models;
 
 namespace ssdt_sample_web.Controllers
 {
@@ -17,9 +18,18 @@ namespace ssdt_sample_web.Controllers
         private OrderManagement db = new OrderManagement();
 
         // GET: api/Item
-        public IQueryable<Item> GetItems()
+        public IEnumerable<ItemModel> GetItems()
         {
-            return db.Items;
+            return db.Items.Select(x => new ItemModel()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                ItemCategory = new ItemCategoryModel()
+                {
+                    Id = x.ItemCategory.Id,
+                    Name = x.ItemCategory.Name
+                }
+            });
         }
 
         // GET: api/Item/5

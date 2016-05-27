@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+	<meta charset="utf-8" />
+    <script type="text/javascript" src="../Scripts/jquery-1.10.2.js"></script>
+
+</head>
+<body>
+    <p id="customer-id"></p>
+    <p id="customer-name"></p>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                url: "http://localhost:16808/api/Customer/1"
+            }).then(function (data) {
+                alert('Got data');
+                console.log(data);
+                $('#customer-id').append(data.Id);
+                $('#customer-name').append(data.Name);
+            });
+        });
+    </script>
+</body>
+</html>

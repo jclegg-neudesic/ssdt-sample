@@ -90,9 +90,6 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="OrderManagment.edmx.diagram">
       <DependentUpon>OrderManagment.edmx</DependentUpon>
     </None>
